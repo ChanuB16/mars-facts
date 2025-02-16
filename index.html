@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #f06595, #6a4c93);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #fact-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        #new-fact-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #6a4c93;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #new-fact-button:hover {
+            background-color: #f06595;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-container">
+        <p id="fact"></p>
+    </div>
+    <button id="new-fact-button">Show Random Fact</button>
+    <script>
+        const facts = [
+            "Mars is the fourth planet from the Sun in our solar system.",
+            "Mars is often referred to as the 'Red Planet' due to its reddish appearance, which is caused by iron oxide (rust) on its surface.",
+            "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+            "The atmosphere of Mars is very thin and is composed mostly of carbon dioxide (about 95.3%).",
+            "Mars has two small moons, Phobos and Deimos, which are thought to be captured asteroids.",
+            "A day on Mars, known as a sol, is approximately 24.6 hours long.",
+            "Mars has the largest dust storms in the solar system, which can cover the entire planet and last for months.",
+            "Mars has a canyon system called Valles Marineris that is over 2,500 miles (4,000 kilometers) long and up to 7 miles (11 kilometers) deep.",
+            "Mars has polar ice caps made of water and dry ice (frozen carbon dioxide).",
+            "Mars has been explored by several spacecraft, including rovers like Curiosity and Perseverance, which are studying the planet's geology and climate."
+        ];
+
+        const factContainer = document.getElementById('fact');
+        const newFactButton = document.getElementById('new-fact-button');
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            factContainer.textContent = facts[randomIndex];
+            factContainer.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                factContainer.style.transform = 'scale(1)';
+            }, 500);
+        }
+
+        newFactButton.addEventListener('click', showRandomFact);
+
+        // Show a random fact on initial load
+        showRandomFact();
+    </script>
+</body>
+</html>
